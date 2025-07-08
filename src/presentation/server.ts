@@ -13,12 +13,8 @@ export class Server{
         console.log('server started');
         // console.log(envs);
 
-        const sentMail = new EmailService();
-        sentMail.sendEmail({
-            to:'danielricardogt@gmail.com',
-            subject: 'Test Mail',
-            htmlBody:`<h1>Hola mundo email</h1>`
-        })
+        // const sentMail = new EmailService(fileSystemLogRepository);
+        // sentMail.sendEmailWithFileSystemLogs(['danielricardogt@gmail.com', 'drgalvan@davivienda.com'])
 
         // CronService.createJob(
         //     '*/5 * * * * *',
