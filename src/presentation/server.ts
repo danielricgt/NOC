@@ -5,15 +5,16 @@ import { LogPepositoyImpl } from "../infraestructure/repository/log/log.reposito
 import { CronService } from "./cron/cron-service";
 import { envs } from "../config/plugins/env.plugins";
 import { EmailService } from "./email/email.service";
+import { sendEmailLogs } from "../domain/use-cases/email/send-email-logs";
 
 const fileSystemLogRepository = new LogPepositoyImpl((new FileSystemDataSource));
-
+const sentMail = new EmailService();
 export class Server{
     public static start () {
         console.log('server started');
         // console.log(envs);
 
-        // const sentMail = new EmailService(fileSystemLogRepository);
+        new sendEmailLogs(sentMail, fileSystemLogRepository).execute(['danielricardogt@gmail.com', 'drgalvan@davivienda.com'])
         // sentMail.sendEmailWithFileSystemLogs(['danielricardogt@gmail.com', 'drgalvan@davivienda.com'])
 
         // CronService.createJob(

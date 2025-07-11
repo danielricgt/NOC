@@ -19,7 +19,7 @@ interface Attachment {
 
 export class EmailService {  
 
-    constructor(private readonly LogRepository: LogRepository){
+    constructor(){
         
     }
 
@@ -49,15 +49,13 @@ export class EmailService {
                 message: 'attached email send',
                 origin: 'EmailService.ts',
             })
-            this.LogRepository.saveLog(log);
             return true
         } catch (error) {
             const log =  new LogEntity({
                 level: LogSeverityLevel.high ,
-                message: 'attached email was not  send',
+                message: `${error}`,
                 origin: 'EmailService.ts',
             })
-            this.LogRepository.saveLog(log);
             return false;
         }
     }
