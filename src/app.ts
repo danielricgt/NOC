@@ -11,7 +11,7 @@ async function main(){
     await MongoDataBase.connect({mongoUrl : envs.MONGO_URL, dbName : envs.MONGO_DB_NAME});
     
     
-    //  Server.start();
+      Server.start();
     // console.log(envs.PORT)
     
     // create a collection
@@ -26,7 +26,7 @@ async function main(){
 
     // console.log(newLog)
     
-     const logs = await LogModel.find();
-     console.log(logs[0].message);
+     // const logs = await LogModel.find();
+     // console.log(logs[0].message);
 }
       
